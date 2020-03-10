@@ -1,4 +1,4 @@
-![logo](_media/icon.jpeg)
+![logo](_media/icon.png)
 # 邓洋杰的文档网站
 ## 个人文档网站
 > 一个神奇的文档网站生成巩固
