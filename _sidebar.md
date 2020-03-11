@@ -1,7 +1,5 @@
 - [Introduction](introduction)
 - [Java笔记](java_index)
-    <!-- - [java1](Java/java1.md) -->
-    <!-- - [java2](Java/java2.md) -->
 - [Spring笔记](themes)
 - [计算机网络](customization)
 - [Leetcode题解](options)
