@@ -1,3 +1,4 @@
-- [java1](java1)
+- [java1](Java/java1)
+- [java2](Java/java2)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
