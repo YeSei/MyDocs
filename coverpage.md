@@ -6,3 +6,4 @@
 
 [GitHub](https://github.com/YeSei/)
 [Get Started](introduction)
+[test](Java/java2.md)
