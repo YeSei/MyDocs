@@ -5,5 +5,4 @@
 * Right@yesei@mail.ustc.edu.cn
 
 [GitHub](https://github.com/YeSei/)
-[Java笔记](#)
-[Spring笔记](#)
+[Get Started](introduction)
