@@ -1,9 +1,0 @@
-- [Introduction](introduction)
-- [Java笔记](java_index)
-- [Spring笔记](themes)
-- [计算机网络](customization)
-- [Leetcode题解](options)
-- [DB数据库](markdown)
-- [Changelog](changelog)
-- **Links**
-- [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
