@@ -1,5 +1,5 @@
 - [Introduction](introduction)
-- [Java笔记](quick-start)
+- [Java笔记](Java)
 - [Spring笔记](themes)
 - [计算机网络](customization)
 - [Leetcode题解](options)
