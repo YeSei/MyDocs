@@ -1,7 +1,7 @@
 * [Java笔记](/Java/README.md)
 * [Spring笔记](/Spring/README.md)
-* [计算机网络笔记]
-* [数据库笔记]
-* [Flink笔记]
-* [Hadoop笔记]
-* [LeetCode题解]
+* [计算机网络笔记](/NetWork/README.md)
+* [数据库笔记](/DataBase/README.md)
+* [Flink笔记](/Flink/README.md)
+* [Hadoop笔记](/Hadoop/README.md)
+* [LeetCode题解](/Leetcode/README.md)
