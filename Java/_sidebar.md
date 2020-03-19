@@ -7,5 +7,13 @@
 - [【7】工厂类和配置文件](Java/【7】工厂类和配置文件)
 - [【8】自动装箱和拆箱](Java/【8】自动装箱和拆箱)
 - [【9】Java动态代理](Java/【9】Java动态代理)
+- [【10】JVM简介](Java/【10】JVM简介)
+- [【11】Java垃圾回收机制](Java/【11】Java垃圾回收机制)
+- [【12】JVM类加载机制](Java/【12】JVM类加载机制)
+- [【13】方法区和常量池](Java/【13】方法区和常量池)
+- [【14】Java闭包](Java/【14】Java闭包)
+- [【15】匿名内部类和final修饰](Java/【15】匿名内部类和final修饰)
+- [【16】可变参数传递](Java/【16】可变参数传递)
+- [【17】单例模式](Java/【17】单例模式)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)

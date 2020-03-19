@@ -1,11 +1,3 @@
-- [【1】序列化serializable](Java/【1】序列化serializable)
-- [【2】java是如何反序列化final字段的](Java/【2】java是如何反序列化final字段的)
-- [【3】Junit测试代码](Java/【3】Junit测试代码)
-- [【4】注解](Java/【4】注解)
-- [【5】程序耦合](Java/【5】程序耦合)
-- [【6】JavaBeans的含义](Java/【6】JavaBeans的含义)
-- [【7】工厂类和配置文件](Java/【7】工厂类和配置文件)
-- [【8】自动装箱和拆箱](Java/【8】自动装箱和拆箱)
-- [【9】Java动态代理](Java/【9】Java动态代理)
+- [【1】数据缓存](Hadoop/【1】数据缓存)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
