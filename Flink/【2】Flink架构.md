@@ -1,5 +1,5 @@
 # 【2】Flink架构
-![459f8fdf584509dae5c2f56466c82f7f.svg+xml](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENResource/p51)
+![599415cbfeb774cc3d457be9d4a96d67](【2】Flink架构.resources/processes.png)
 > Flink整个系统主要包括两个组件：**JobManager**和**TaskManager**。遵循Master-Slave结构设计原则。
 
 ## 2.1 Client客户端
