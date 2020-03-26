@@ -1,4 +1,4 @@
-# 【12】HttpURLConnection、HttpClient，OkHttp，Volley
+# 【11】HttpURLConnection、HttpClient，OkHttp，Volley
 - HttpURLConnection是java.net包提供的基本类，没有什么封装，具有良好扩展性。但是其close方法会导致连接池失效，一般会禁用连接池。
 - HttpClient相对于HttpURLConnection具有良好的封装，对外提供大量api，扩展性不太好。并且由于其维护过于垃圾，版本之间兼容性太差，目前基本已被抛弃。
 - Okhttp具有比httpclient更好的扩展性和兼容性，且比httpurlconnection更容易使用，目前使用范围十分广泛。
