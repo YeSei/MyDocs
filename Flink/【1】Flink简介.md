@@ -1,5 +1,9 @@
 # 【1】Flink简介
 ## 1.1 简介
+**1. 常见的大数据处理架构**
+![8c34738705f248536b18141b6bf7255e](【1】Flink简介.resources/59DCDABB-F311-4FD9-8F36-90D8B4FCC77F.png)
+
+**2. Flink实时处理架构**
 > Flink通过实现Google DataFlow流式计算模型实现了**高吞吐、低延迟、高性能**的实时流式计算框架。
 > 除了以上优点，Flink还提供:
 > - **事件时间Event time**：保证事件即使乱序到达也能通过event time保证计算结果正确性。

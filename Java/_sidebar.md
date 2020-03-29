@@ -15,5 +15,10 @@
 - [【15】匿名内部类和final修饰](Java/【15】匿名内部类和final修饰)
 - [【16】可变参数传递](Java/【16】可变参数传递)
 - [【17】单例模式](Java/【17】单例模式)
+- [【18】浅拷贝，深拷贝和延迟拷贝](Java/【18】浅拷贝，深拷贝和延迟拷贝)
+- [【19】String，StringBuilder和Stringbuffer](Java/【19】String，StringBuilder和Stringbuffer)
+- [【20】Hashmap的长度为2的幂](Java/【20】Hashmap的长度为2的幂)
+- [【21】守护线程](Java/【21】守护线程)
+- [【22】双亲委派模型](Java/【22】双亲委派模型)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
