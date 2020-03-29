@@ -14,21 +14,21 @@
 ## 例子：flink读写kafka
 > 在一个读写 Kafka 的 Flink 程序中实现端到端的 Exactly-Once 语义。Flink 对端到端的 Exactly-Once 语义的支持不仅局限于 Kafka ，您可以将它与任何一个提供了必要的协调机制的源/输出端一起使用。
 
-![afda77993175bbd9fa8e9ebee9e097ec.jpeg](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENNote/p180?hash=afda77993175bbd9fa8e9ebee9e097ec)
+![ae59658e39ba4ac1e77caf108c10e50d](【10】Sink的端到端的一致性.resources/C34FC3A5-891E-48EF-8A26-4D7BBF8EFE6F.png)
 > - 要使数据输出端提供 Exactly-Once 保证，它必须将所有数据通过一个事务提交给 Kafka。提交捆绑了两个 checkpoint 之间的所有要写入的数据。这可确保在发生故障时能回滚写入的数据。
 > - 但是在分布式系统中，通常会有多个并发运行的写入任务的，简单的提交或回滚是不够的，因为所有组件必须在提交或回滚时“一致”才能确保一致的结果。Flink 使用**两阶段提交协议**来解决这个问题。
 
-![98d22f5838278d53d0f407ab658ad10f.jpeg](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENNote/p180?hash=98d22f5838278d53d0f407ab658ad10f)
+![718ed81ff678428e6ca74d95321e5a80](【10】Sink的端到端的一致性.resources/2F935536-B339-4DC8-BA39-5B60B68F31FC.png)
 > - 两阶段提交协议的“预提交”阶段,起始于一次快照的checkpoint开始阶段。即master节点将checkpoint的barrier注入source端，barrier随着数据向下流动直到sink端。barrier每到一个算子，都会出发算子做本地快照。
 > - Flink 的 JobManager 会将 checkpoint barrier注入数据流。对于每一个 operator，barrier触发 operator 的状态快照写入到 state backend。
 
-![2d1c46a40b5432184028e8838d88d9d9.jpeg](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENNote/p180?hash=2d1c46a40b5432184028e8838d88d9d9)
+![769ae4a51f4f2b856dce2a7fb5faa8e6](【10】Sink的端到端的一致性.resources/718D607A-6110-478B-B5D7-78CA992FF3CA.png)
 > - Source快照保存了消费 Kafka 的偏移量(offset)，之后将 checkpoint barrier传递给下一个 operator。
 
-![6a004a9f994627ce492c4c276fa0db0e.jpeg](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENNote/p180?hash=6a004a9f994627ce492c4c276fa0db0e)
+![d068a506fc04e396115c5e5bcf162bfa](【10】Sink的端到端的一致性.resources/28ED391D-B213-48EA-A37B-2D39A874E629.png)
 > - 本次数据最终写入Kafka，因此数据输出端（ Data Sink ）有外部状态。在这种情况下，在预提交阶段，除了将其状态写入 state backend 之外，数据输出端还必须预先提交其外部事务。
 
-![af978f2c1baf69dcf0a56dab32592113.jpeg](evernotecid://9416FA4A-787D-48E7-9E85-F061AFB9BBF2/appyinxiangcom/27617559/ENNote/p180?hash=af978f2c1baf69dcf0a56dab32592113)
+![52025e95e61da39fe0bb35d36cef17f1](【10】Sink的端到端的一致性.resources/492953F7-E9BB-4234-B0D9-33A7A70D23A3.png)
 > - 当 checkpoint barrier 在所有 operator 都传递了一遍，并且触发的 checkpoint 回调成功完成时，预提交阶段就结束了。所有触发的状态快照都被视为该 checkpoint 的一部分。checkpoint 是整个应用程序状态的快照，**包括预先提交的外部状态**。如果发生故障，我们可以回滚到上次成功完成快照的时间点。
 > - 进入"**提交阶段**"，JobManager 为应用程序中的每个 operator 发出 checkpoint 已完成的回调。数据输出端（Data Sink）拥有外部状态，此时提交外部事务。
 
