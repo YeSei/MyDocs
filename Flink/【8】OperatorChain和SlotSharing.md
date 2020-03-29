@@ -1,5 +1,5 @@
 # 【8】Operator Chain和Slot Sharing
-![068770d0c291af7c8f46f0bd2b1a1899](【8】Operator Chain和Slot Sharing.resources/D734B067-C54D-4F3E-9EDB-AD3CB015DFB6.png)
+![068770d0c291af7c8f46f0bd2b1a1899](【8】OperatorChain和SlotSharing.resources/D734B067-C54D-4F3E-9EDB-AD3CB015DFB6.png)
 > **每个JM（JobManager），TM（TaskManager）都是运行在一个独立的 JVM 进程中**。
 > 每个 TM 最少持有 1 个 Slot，Slot是 Flink 执行 Job 时的最小资源分配单位，**在 Slot 中运行着具体的 Task 任务。每个Slot执行一个task线程任务**。
 
@@ -17,15 +17,15 @@
 > 一个Task（算子）可以分成多个SubTask（实现Runable多线程）。在不考虑 **Slot Sharing**（下文详述）的情况下，一个 Slot 内运行着一个 **SubTask**（Task 实现 Runable，SubTask 是一个执行 Task 的具体实例）
 
 ## 8.2 Yarn Container
-![da3123b2c5f27500be3cd28573f591b0](【8】Operator Chain和Slot Sharing.resources/CC893C2A-0F47-4D2A-8846-45236DDBFFCE.png)
+![da3123b2c5f27500be3cd28573f591b0](【8】OperatorChain和SlotSharing.resources/CC893C2A-0F47-4D2A-8846-45236DDBFFCE.png)
 > 每个 JM/TM 实例都分属于不同的 Yarn Container，且每个 Container 内只会有一个 JM 或 TM 实例；
 > 每个 Container 都是一个独立的进程，一台物理机可以有多个 Container 存在（多个进程），每个 Container 都持有一定数量的 CPU 和 Memory 资源，而且是资源隔离的，进程间不共享，这就可以保证同一台机器上的多个 TM 之间是资源隔离的（Standalone 模式下，同一台机器下若有多个 TM，是做不到 TM 之间的 CPU 资源隔离的）。
 
 ## 8.3 Slot共享资源
-![93f0142b300719be6330e1e027cd280c](【8】Operator Chain和Slot Sharing.resources/99093427-552A-4970-A96F-C5A99BF65E38.png)
+![93f0142b300719be6330e1e027cd280c](【8】OperatorChain和SlotSharing.resources/99093427-552A-4970-A96F-C5A99BF65E38.png)
 > 图中有两个 TM，各自有 3 个 Slot，2 个 Slot 内有 Task 在执行，1 个 Slot 空闲。若这两个 TM 在不同 Container 或容器上，则其占用的资源是互相隔离的。在 TM 内多个 Slot 间是各自拥有 1/3 TM 的 Memory，共享 TM 的 CPU、网络（Tcp：ZK、 Akka、Netty 服务等）、心跳信息、Flink 结构化的数据集等。
 
-![1957c96f8b8722c67604fb4c9a8682a7](【8】Operator Chain和Slot Sharing.resources/8F0651A0-2DB3-4173-83BF-1F9AFC889E25.png)
+![1957c96f8b8722c67604fb4c9a8682a7](【8】OperatorChain和SlotSharing.resources/8F0651A0-2DB3-4173-83BF-1F9AFC889E25.png)
 > 如上图，Slot 内运行着具体的 Task，它是在线程中执行的 Runable 对象（每个虚线框代表一个线程），每个 Task 都是由一组 Operators Chaining 在一起的工作集合。
 
 ## 8.4 Operator Chain
@@ -34,7 +34,7 @@
 
 **注【一个需要注意的地方】**：Chained 的 Operators 之间的数据传递默认需要经过数据的拷贝（例如：kryo.copy(…)），将上游 Operator 的输出序列化出一个新对象并传递给下游 Operator，可以通过 ExecutionConfig.enableObjectReuse() 开启对象重用，这样就关闭了这层 copy 操作，可以减少对象序列化开销和 GC 压力等
 
-![b928e6cd038302bef0d58a62050e7d87](【8】Operator Chain和Slot Sharing.resources/CA6F2804-1720-4B7D-B32A-8C0D81A08767.png)
+![b928e6cd038302bef0d58a62050e7d87](【8】OperatorChain和SlotSharing.resources/CA6F2804-1720-4B7D-B32A-8C0D81A08767.png)
 > **上图的上半部分**： 是StreamGraph 视角，有 Task 类别无并行度，如图：Job Runtime 时有三种类型的 Task，分别是 Source->Map、keyBy/window/apply、Sink，其中 Source->Map 是 Source() 和 Map()chaining 在一起的 Task；
 > **上图的下半部分**：是一个 Job Runtime 期的实际状态，Job 最大的并行度为 2，有 5 个 SubTask（即 5 个执行线程）。若没有 Operator Chain，则 Source() 和 Map() 分属不同的 Thread，Task 线程数会增加到 7，线程切换和数据传递开销等较之前有所增加，处理延迟和性能会较之前差。
 > **补充**：在 slotSharingGroup 用默认或相同组名时，当前 Job 运行需 2 个 Slot（与 Job 最大 Parallelism 相等）。
@@ -45,10 +45,10 @@
 
 > **Slot Sharing的应用**：在Slot数量足够的情况下，增加Operator 可设置的最大的并行度，让类似 window 这种消耗资源的 Task 以最大的并行度分布在不同 TM 上，同时像 map、filter 这种较简单的操作也不会独占 Slot 资源，降低资源浪费的可能性。
 
-![2cbe462c830c88923a9f896af082fab6](【8】Operator Chain和Slot Sharing.resources/6523F064-B488-4B06-B5F6-A09A865ACAF8.png)
+![2cbe462c830c88923a9f896af082fab6](【8】OperatorChain和SlotSharing.resources/6523F064-B488-4B06-B5F6-A09A865ACAF8.png)
 > 上图的左下角是一个 soure-map-reduce 模型的 Job，source 和 map 是 **4 parallelism**，reduce 是 **3 parallelism**，总计 11 个 SubTask；这个 Job 最大 Parallelism 是 4，所以将这个 Job 发布到左侧上面的两个 TM 上时得到图右侧的运行图，一共占用四个 Slot，有三个 Slot 拥有完整的 source-map-reduce 模型的 Pipeline，如右侧图所示；注：map 的结果会 shuffle 到 reduce 端，右侧图的箭头只是说 Slot 内数据 Pipline，没画出 Job 的数据 shuffle 过程。
 
 **更详细的图如下**：
-![7fbb0bfeb7ad92556483ede1f02bd5f3](【8】Operator Chain和Slot Sharing.resources/A6E3288F-7272-41BB-9C23-E47288E8EAC6.png)
+![7fbb0bfeb7ad92556483ede1f02bd5f3](【8】OperatorChain和SlotSharing.resources/A6E3288F-7272-41BB-9C23-E47288E8EAC6.png)
 > 图中包含 **source-map**[6 parallelism]、**keyBy/window/apply**[6 parallelism]、**sink**[1 parallelism] 三种 Task，总计占用了 6 个 Slot；由左向右开始第一个 slot 内部运行着 3 个 SubTask[3 Thread]，持有 Job 的一条完整 pipeline；剩下 5 个 Slot 内分别运行着 2 个 SubTask[2 Thread]，数据最终通过网络传递给 Sink 完成数据处理。
 

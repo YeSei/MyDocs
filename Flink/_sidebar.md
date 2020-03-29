@@ -5,8 +5,8 @@
 - [【5】Window计算](Flink/【5】Window计算)
 - [【6】Flink的状态管理](Flink/【6】Flink的状态管理)
 - [【7】Flink的容错机制Checkpoint](Flink/【7】Flink的容错机制Checkpoint)
-- [【8】OperatorChain和SlotSharing](FLink/【8】OperatorChain和SlotSharing)
+- [【8】OperatorChain和SlotSharing](Flink/【8】OperatorChain和SlotSharing)
 - [【9】Flink的内部优化](Flink/【9】Flink的内部优化)
-- [【10】Sink的端到端的一致性](FLink/【10】Sink的端到端的一致性)
+- [【10】Sink的端到端的一致性](Flink/【10】Sink的端到端的一致性)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
