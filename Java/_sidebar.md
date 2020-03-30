@@ -20,5 +20,8 @@
 - [【20】Hashmap的长度为2的幂](Java/【20】Hashmap的长度为2的幂)
 - [【21】守护线程](Java/【21】守护线程)
 - [【22】双亲委派模型](Java/【22】双亲委派模型)
+- [【23】公平锁和非公平锁](Java/【23】公平锁和非公平锁)
+- [【24】ReentrantLock](Java/【24】ReentrantLock)
+- [【25】AQS原理](Java/【25】AQS原理)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
