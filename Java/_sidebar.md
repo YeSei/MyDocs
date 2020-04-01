@@ -23,5 +23,7 @@
 - [【23】公平锁和非公平锁](Java/【23】公平锁和非公平锁)
 - [【24】ReentrantLock](Java/【24】ReentrantLock)
 - [【25】AQS原理](Java/【25】AQS原理)
+- [【26】线程池](Java/【26】线程池)
+- [【27】线程池拒绝策略](Java/【27】线程池拒绝策略)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)

@@ -1,4 +1,6 @@
 - [【1】数据缓存](Hadoop/【1】数据缓存)
 - [【2】Elasticsearch倒排索引](Hadoop/【2】Elasticsearch倒排索引)
+- [【3】分布式缓存](Hadoop/【3】分布式缓存)
+- [【4】负载均衡(分布式)算法](Hadoop/【4】负载均衡(分布式)算法)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)

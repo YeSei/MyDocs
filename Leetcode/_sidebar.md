@@ -1,3 +1,8 @@
-- [【01】快速排序](Leetcode/【01】快速排序)
+- [【1】快速排序](Leetcode/【01】快速排序)
+- [【2】Java深拷贝](Leetcode/【2】Java深拷贝)
+- [【3】Arrays.asList陷阱](Leetcode/【3】Arrays.asList陷阱)
+- [【4】2个鸡蛋100层楼](Leetcode/【4】2个鸡蛋100层楼)
+- [【5】字符串的比较](Leetcode/【5】字符串的比较)
+- [【6】数组和集合类型排序](Leetcode/【6】数组和集合类型排序)
 - **Links**
 - [![Github](https://icongram.jgog.in/simple/github.svg?color=808080&size=16)Github](https://github.com/YeSei)
